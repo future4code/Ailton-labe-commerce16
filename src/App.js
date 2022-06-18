@@ -1,3 +1,4 @@
+import Filtros from './Components/Filtros';
 import './App.css';
 import React, { Component } from 'react'
 import styled from 'styled-components'
@@ -71,6 +72,7 @@ function App() {
   return (
     <div className="App">
       <Home/>
+     <Filtros/>
     </div>
   );
 }
