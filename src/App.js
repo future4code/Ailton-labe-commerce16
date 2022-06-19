@@ -3,7 +3,6 @@ import produtosList from "./Components/data/produtos.json"
 import Filtros from './Components/Filtros';
 import { Home } from './Components/Home'
 
-
 export class App extends Component {
   state = {
     produtos: produtosList
