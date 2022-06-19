@@ -1,31 +1,31 @@
+import React, { Component }from 'react'
 import './App.css';
 import produtosList from "./Components/data/produtos.json"
 import Filtros from './Components/Filtros';
 import { Home } from './Components/Home'
 
+ export class App extends Component {
+state = {
+    produtos: produtosList
+   }
 
-// export class App extends Component {
-//   state = {
-//     produtos: produtosList
-//   }
+   render() {
+      return (
+     <div>
 
-//   render() {
-//      return (
-//       <div>
-
-//         <h3> Quantidade de produtos:{this.state.produtos.length} </h3>
-//           {this.state.produtos.map(produto => {
-//             return <Home key = {produto.key} produto={produto} />
-//           })}
-//         <Filtros></Filtros>
+    <h3> Quantidade de produtos:{this.state.produtos.length} </h3>
+          {this.state.produtos.map(produto => {
+return <Home key = {produto.key} produto={produto} />
+          })}
+      <Filtros></Filtros>
       
-//       </div>
-//      )
-//   }
-// }
+      </div>
+     )
+  }
+}
 
 
-export default class Carrinho extends Component {
+export  class Carrinho extends Component {
   state={
     carrinho = []
   }
@@ -35,12 +35,23 @@ export default class Carrinho extends Component {
   render() {
     return (
       <div><h1>Carrinho</h1>
-      <p>Valor Total:{valorTotal}</p>
+
+export class App extends Component {
+  state = {
+    produtos: produtosList
+  }
+  render() {
+     return (
+      <div>
+        <h3> Quantidade de produtos:{this.state.produtos.length} </h3>
+          {this.state.produtos.map(produto => {
+            return <Home key = {produto.key} produto={produto} />
+          })}
+        <Filtros></Filtros>
+
       </div>
-    )
+     )
   }
 }
-    
 
-
-
+export default App;
