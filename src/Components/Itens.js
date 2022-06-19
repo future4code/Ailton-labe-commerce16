@@ -19,15 +19,20 @@ gap: 10px;
 margin-top: 10px;
 `;
 
+export const Fotos = styled.img `
+width: 10vw;
+height: 15vh;
+`
 
-
-export function Home (props) {
+export function Itens (props) {
     return (
       <Container>
-        <CardProduct
-        img = {props.produto.img}
-        nome = {props.produto.nome}
-        preco = {props.produto.preco}></CardProduct>
+        <CardProduct>
+        <Fotos src={props.produto.img}/>
+        <h4>{props.produto.nome}</h4>
+        <p>Preço R$:{props.produto.preco}</p>
+        <button>Adicionar ao Carrinho</button>
+        </CardProduct>
       </Container>
     )
   }
