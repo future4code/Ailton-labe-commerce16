@@ -1,103 +1,46 @@
-
 import './App.css';
-import React, { Component } from 'react'
-import styled from 'styled-components'
-
-const CardProduct = styled.div `
-  border: 1px solid black;
-  width: 10vw;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-  align-items: center;
-  padding: 10px;
-
-`
-
-const Container = styled.div `
-display: flex;
-justify-content: center;
-gap: 10px;
-margin-top: 10px;
-`
+import produtosList from "./Components/data/produtos.json"
+import Filtros from './Components/Filtros';
+import { Home } from './Components/Home'
 
 
-export class Home extends Component {
+// export class App extends Component {
+//   state = {
+//     produtos: produtosList
+//   }
+
+//   render() {
+//      return (
+//       <div>
+
+//         <h3> Quantidade de produtos:{this.state.produtos.length} </h3>
+//           {this.state.produtos.map(produto => {
+//             return <Home key = {produto.key} produto={produto} />
+//           })}
+//         <Filtros></Filtros>
+      
+//       </div>
+//      )
+//   }
+// }
+
+
+export default class Carrinho extends Component {
+  state={
+    carrinho = []
+  }
+  valorTotal=() => {
+    produtosList.preco + produtosList.preco
+  }
   render() {
-
     return (
-      <div className='container'>
-        <div className='top'>
-          <p> Quantidade de produtos x </p>
-          <label> Ordenação: </label>
-          <select>
-            <option value={"crescente"}>Crescente</option>
-            <option value={"decrescente"}>Decrescente</option>
-          </select>
-        </div>
-        <Container>
-        <CardProduct className='card'>
-          <img src='https://picsum.photos/200/300'></img>
-          <h4> Produto 1 </h4>
-          <p> Preço $100 </p>
-          <button> Adicionar ao carrinho </button>
-        </CardProduct>
-        <CardProduct className='card'>
-          <img src='https://picsum.photos/200/300'></img>
-          <h4> Produto 2 </h4>
-          <p> Preço $100 </p>
-          <button> Adicionar ao carrinho </button>
-        </CardProduct>
-        <CardProduct className='card'>
-          <img src='https://picsum.photos/200/300'></img>
-          <h4> Produto 3 </h4>
-          <p> Preço $100 </p>
-          <button> Adicionar ao carrinho </button>
-        </CardProduct>
-        <CardProduct className='card'>
-          <img src='https://picsum.photos/200/300'></img>
-          <h4> Produto 4 </h4>
-          <p> Preço $100 </p>
-          <button> Adicionar ao carrinho </button>
-        </CardProduct>
-        </Container>
+      <div><h1>Carrinho</h1>
+      <p>Valor Total:{valorTotal}</p>
       </div>
     )
   }
 }
-
-
-export function App() {
-  return (
-    <div className="App">
-    <Home/>
-    </div>
-  );
-}
-
-export class Carrinho extends Component {
-  state = {
-    listaDeProdutos:[],
-    carrinho : []
-  }
-
-removerProduto =(produtoId) => {
-  const novaLista = this.state.listaDeProdutos.filter((produto) => {
-    return produtoId !== produto.id
-  })
-  this.setState({listaDeProdutos:novaLista})
-}
+    
 
 
 
-  render() {
-    return (
-      <div className='carrinho'>
-        <h1>Carrinho</h1>
-        <button onClick={this.removerProduto}>Remover</button>
-      </div>
-    )
-  }
-
-}
