@@ -1,57 +1,65 @@
-import React, { Component }from 'react'
 import './App.css';
 import produtosList from "./Components/data/produtos.json"
 import Filtros from './Components/Filtros';
 import { Home } from './Components/Home'
 
- export class App extends Component {
-state = {
+
+export class App extends Component {
+  state = {
     produtos: produtosList
-   }
+  }
 
-   render() {
-      return (
-     <div>
+  render() {
+     return (
+      <div>
 
-    <h3> Quantidade de produtos:{this.state.produtos.length} </h3>
+        <h3> Quantidade de produtos:{this.state.produtos.length} </h3>
           {this.state.produtos.map(produto => {
-return <Home key = {produto.key} produto={produto} />
+            return <Home key = {produto.key} produto={produto} />
           })}
-      <Filtros></Filtros>
+        <Filtros></Filtros>
       
       </div>
      )
   }
 }
 
-
 export  class Carrinho extends Component {
   state={
-    carrinho = []
+    carrinho : []
   }
   valorTotal=() => {
     produtosList.preco + produtosList.preco
   }
-  render() {
-    return (
-      <div><h1>Carrinho</h1>
 
-export class App extends Component {
-  state = {
-    produtos: produtosList
+  apagarProduto = (produto) => {
+    const novoArray = this.state.produtosList.filter((produto,index) => {
+      return produto.quantidade -1
+    })
+
+    this.setState({produtosList: novoArray})
+  }
+  adicionaProduto = () => {
+   
   }
   render() {
-     return (
+    const renderizaProdutos = this.state.produtosList.map((produto, index) => {
+      return (
+        <Container key={index}>
+          <h1>Carrinho</h1>
+          <p>{produto.nome}</p>
+          <p>{quantidade}x</p>
+           { /*quantidade vem do botão adicionar*/ }
+          <button onClick={() => this.apagarProduto(index)}>Remover</button>
+          <p>Valor Total:{valorTotal}</p>
+        </Container>
+      );
+    });
+    return (
       <div>
-        <h3> Quantidade de produtos:{this.state.produtos.length} </h3>
-          {this.state.produtos.map(produto => {
-            return <Home key = {produto.key} produto={produto} />
-          })}
-        <Filtros></Filtros>
-
+      {renderizaProdutos}
       </div>
-     )
+    )
   }
 }
-
-export default App;
+    
