@@ -39,7 +39,7 @@ export  class Carrinho extends Component {
     this.setState({produtosList: novoArray})
   }
   adicionaProduto = () => {
-   
+  
   }
   render() {
     const renderizaProdutos = this.state.produtosList.map((produto, index) => {
@@ -56,9 +56,18 @@ export  class Carrinho extends Component {
     });
     return (
       <div>
+
       {renderizaProdutos}
+        <h3> Quantidade de produtos:{this.state.produtos.length} </h3>
+          {this.state.produtos.map(produto => {
+            return <Home key = {produto.key} produto={produto} />
+          })}
+        <Filtros></Filtros>
+
       </div>
     )
   }
-}
-    
+}    
+
+export default App;
+
