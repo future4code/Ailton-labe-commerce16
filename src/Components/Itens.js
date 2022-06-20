@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { Component } from 'react'
+import React from 'react'
 
 export const CardProduct = styled.div `
   border: 1px solid black;
@@ -30,7 +30,7 @@ export function Itens (props) {
         <CardProduct>
         <Fotos src={props.produto.img}/>
         <h4>{props.produto.nome}</h4>
-        <p>Preço R$:{props.produto.preco}</p>
+        <p>Preço R${props.produto.preco}</p>
         <button>Adicionar ao Carrinho</button>
         </CardProduct>
       </Container>
