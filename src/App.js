@@ -11,32 +11,43 @@ const LocalDoFiltro = styled.div`
 `;
 
 
+
+
 export class App extends React.Component {
   state = {
     produtos: produtosList,
     minimoInput:"",
     maximoInput:"",
-    produtoInput:''
+    produtoInput:'',
+    ordena:"nome"
   }
 
   onChangeMinimo =(event) =>{
     this.setState({minimoInput: event.target.value})
   }
+
   onChangeMaximo =(event) =>{
     this.setState({maximoInput: event.target.value})
   }
+
   onChangeProduto =(event) =>{
     this.setState({produtoInput: event.target.value})
+  }
+
+  onChangeOrdenar =(event) =>{
+    this.setState({ordena: event.target.value})
   }
 
   render() {
 
      return (
       <>
-      <h3> Quantidade de produtos:{this.state.produtos.length} </h3>
-      <select id='ordem'>
-        <option value={"asc"}> Crescente </option>
-        <option value = {"desc"}> Decrescente </option>
+      <h3> Quantidade de produtos: {this.state.produtos.length} </h3>
+      <label for="sort">Ordenar por:</label>
+      <select name="sort" value={this.state.ordena} onChange={this.onChangeOrdenar}>
+        <option value={"nome"}>Ordem Alfabética</option>
+        <option value={"menor"}>Menor Preço</option>
+        <option value={"maior"}>Maior Preço</option>
       </select>
       <Container>
       <LocalDoFiltro>
@@ -52,6 +63,16 @@ export class App extends React.Component {
           .filter(produto => produto.nome.toLocaleLowerCase().includes(this.state.produtoInput.toLocaleLowerCase()))
           .filter(produto => this.state.minimoInput === "" ||produto.preco>=this.state.minimoInput)
           .filter(produto => this.state.maximoInput === "" || produto.preco<=this.state.maximoInput)
+          .sort((produtoA, produtoB) =>{
+            switch (this.state.ordena) {
+              case "maior":
+                return produtoB.preco - produtoA.preco
+              case "menor":
+                return produtoA.preco - produtoB.preco
+              default:
+                return produtoA.nome.localeCompare(produtoB.nome)
+            }
+          })
           .map(produto => {
             return <Itens key = {produto.key} produto={produto} />
           })}
