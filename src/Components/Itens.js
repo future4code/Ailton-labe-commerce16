@@ -7,7 +7,7 @@ export const CardProduct = styled.div `
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: 10px;
 `;
@@ -23,16 +23,19 @@ export const Fotos = styled.img `
 width: 10vw;
 height: 15vh;
 `
+export const Button = styled.button`
+margin-top: auto;
+margin-left: auto;
+padding: 0px;
+`
 
 export function Itens (props) {
     return (
-      <Container>
         <CardProduct>
         <Fotos src={props.produto.img}/>
         <h4>{props.produto.nome}</h4>
         <p>Preço R${props.produto.preco}</p>
-        <button>Adicionar ao Carrinho</button>
+        <Button onClick={() => props.addToCarrinho(props.produto)}>Adicionar ao Carrinho</Button>
         </CardProduct>
-      </Container>
     )
   }
