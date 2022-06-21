@@ -26,7 +26,6 @@ height: 15vh;
 export const Button = styled.button`
 margin-top: auto;
 margin-left: auto;
-padding: 0px;
 `
 
 export function Itens (props) {
