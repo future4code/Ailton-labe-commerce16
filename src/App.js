@@ -148,6 +148,7 @@ export class App extends React.Component {
     for (let i = 0; i < this.state.carrinho.length; i++) {
       valorTotal += this.state.carrinho[i].quantidade * this.state.carrinho[i].preco
     }
+    
     return (
       <>
         <Container>
@@ -210,7 +211,6 @@ export class App extends React.Component {
             <ValorTotal>Total: R${valorTotal}</ValorTotal>
           </LocalDoCarrinho>
         </Container>
-
       </>
     )
   }
